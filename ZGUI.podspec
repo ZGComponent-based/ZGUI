@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ZGUI'
-  s.version  = '1.0.1'
+  s.version  = '1.0.2'
   s.license  = { :type => "MIT", :file => "FILE_LICENSE" }
   s.summary  = '基础框架核心模块'
   s.homepage = 'https://github.com/ZGComponent-based/ZGUI.git'

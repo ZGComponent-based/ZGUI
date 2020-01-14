@@ -79,4 +79,39 @@ open class ZGDateStyle {
         return newDate!
     }
 
+    open class func timeDifferenceFromDate(startTime:String,endTime:String ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let date1 = dateFormatter.date(from: startTime),
+            let date2 = dateFormatter.date(from: endTime) else {
+                return ""
+        }
+        let components = NSCalendar.current.dateComponents([.day,.hour,.minute], from: date1, to: date2)
+        
+        guard let day = components.day else {
+            return ""
+        }
+        guard let hour = components.hour else {
+            return ""
+        }
+        guard let minute = components.minute else {
+            return ""
+        }
+        var time_str = ""
+        if day > 0 {
+            time_str += ("\(day)" + "天")
+        }
+        if hour > 0 {
+            time_str += ("\(hour)" + "小时")
+        }
+        if minute > 0 {
+            time_str += ("\(minute)" + "分")
+        }
+        if day == 0 && hour == 0 && minute == 0 {
+            time_str = "1分钟"
+        }
+        //如果需要返回月份间隔，分钟间隔等等，只需要在dateComponents第一个参数后面加上相应的参数即可，示例如下：
+        //    let components = NSCalendar.current.dateComponents([.month,.day,.hour,.minute], from: date1, to: date2)
+        return time_str
+    }
 }
